@@ -5,7 +5,7 @@ import pickle
 
 
 
-load = pickle.load(open('mall_customer.sav','rb'))
+kmeans = pickle.load(open('mall_customer.pkl','rb'))
 
 label_encoder,scaler,pca = pickle.load(open('mall_pipeline.pkl','rb'))
 
@@ -28,7 +28,7 @@ scaled_input = scaler.transform(input_df)
 pca_input = pca.transform(scaled_input)
 
 # Predict cluster
-cluster = load.predict(pca_input)[0]
+cluster = kmeans.predict(pca_input)[0]
 
 # Optional: Cluster interpretation
 cluster_names = {
